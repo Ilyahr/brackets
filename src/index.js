@@ -1,4 +1,4 @@
-function checkIfExists(arr, item, isCloseBrack) {
+function checkIt(arr, item, isCloseBrack) {
     const Pos = Number(isCloseBrack);
     for (var i = 0; i < arr.length; i++)
         if (arr[i][Pos] === item) {
@@ -10,7 +10,7 @@ function checkIfExists(arr, item, isCloseBrack) {
 module.exports = function check(str, bracketsConfig) {
     var mas = [];
     for (var i = 0; i < str.length; i++) {
-        var element = checkIfExists(bracketsConfig, str[i], false);
+        var element = checkIt(bracketsConfig, str[i], false);
         if (element) {
             if (element[0] === element[1]) {
                 if (mas.length) {
@@ -20,7 +20,7 @@ module.exports = function check(str, bracketsConfig) {
                 } else mas.push(element[0]);
             } else mas.push(element[1]);
         } else {
-            element = checkIfExists(bracketsConfig, str[i], true);
+            element = checkIt(bracketsConfig, str[i], true);
             if (element) {
                 if (!mas.length) return false;
                 if (str[i] !== mas.pop()) return false;
